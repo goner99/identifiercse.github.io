@@ -5,6 +5,44 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: rgb(80, 136, 136);
+        }
+        header{
+            background-color: rgb(55, 92, 92);
+            text-align: center;
+            color: whitesmoke;
+            
+        }
+        .nav {
+            height: auto;
+            text-align: center;
+            margin: 15px 0 ;
+        }
+        .nav > input{
+            width: 110px;
+            height: 50px;
+            margin: 15px 20px;
+            background-color: rgb(55, 92, 92);
+            border: none;
+            color: whitesmoke;
+        }
+        .presentacion{
+            padding: 50px;
+        }
+        .presentacion > img{
+            width: 400px;
+            margin: 0 auto;
+            display: block;
+            border: 1px solid black;
+            border-radius: 50%
+            
+        }
         .form-solicitud{
             width: 500px;
             display: none;
@@ -23,32 +61,55 @@
         #item{
             width: 30% !important;
         }
+        .almacen, .inventario, .compras{
+            display: none;
+        }
     </style>
     <title>Document</title>
 </head>
 <body>
-    <h1>formulario</h1>
-    <input type="button" value="Mostrar" id="mostrar">
-    <div class="form-solicitud" id="form-solicitud">
-        <form id="form">
-            <label for="">Nombre</label>
-            <input type="text">
-            <label for="">Apellido</label>
-            <input type="text">
-            <label for="">Item</label>
-            <input type="text" id="item">
-            <label for="">cantidad</label>
-            <input type="number" id="item">
-            <input type="submit" value="Subir">
-        </form>
-    </div>
-    <div class="kist" id="kist">
-        <div class="content1" id="content1">
-            <p>Primera linea</p>
+    <header>
+        <h1>Amarilis SA</h1>
+    </header>
+    <main id="main">
+        <div class="presentacion">
+            <img src="ecologia-amarilis-2.jpeg" alt="">
         </div>
+        <div class="nav">
+            <input type="button" value="Comprar" id="compras">
+            <input type="button" value="Incentario">
+            <input type="button" value="Almacen">
+        </div>
+        <input type="button" value="Mostrar" id="mostrar">
+        <div class="form-solicitud" id="form-solicitud">
+            <form id="form">
+                <label for="">Nombre</label>
+                <input type="text">
+                <label for="">Apellido</label>
+                <input type="text">
+                <label for="">Item</label>
+                <input type="text" id="item">
+                <label for="">cantidad</label>
+                <input type="number" id="item">
+                <input type="submit" value="Subir">
+            </form>
+        </div>
+         
+        <div class="kist" id="kist">
+            <div class="content1" id="content1">
+                <p>Primera linea</p>
+            </div>
+        </div>
+    </main>
+    <div class="compras" id="content_compras">
+        <h1>Commpras</h1>
     </div>
-
-</div>
+    <div class="almacen">
+        <h1>Almacen</h1>
+    </div>
+    <div class="inventario">
+        <h1>Inventario</h1>
+    </div>
 </body>
 <script>
     var mytext = ["Segunda linea","Tercera Linea"]
@@ -59,7 +120,7 @@
     })
     form.addEventListener("submit",(e)=>{
         e.preventDefault()
-        document.getElementById("form-solicitud").style.display = "none"
+        document.getElementById("form-solicitud").style.display = "none"        
 
     })
     var temp = ""
@@ -68,5 +129,12 @@
         temp = temp + `<div> <p>${e}</p> </div>`
     })
     content.innerHTML += temp  
+
+
+
+    var btn_compras = document.getElementById("compras")
+    btn_compras.addEventListener("click",()=>{
+        document.getElementById("main").innerHTML = document.getElementById("content_compras").innerHTML
+    })
 </script>
 </html>
